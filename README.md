@@ -1,7 +1,7 @@
 # YouTube API
 
 ## Usage:
-1. Start by adding the required JavaScript files.
+- Start by adding the required JavaScript files.
 
 ```
 <!-- feel free to use a different jQuery version -->
@@ -10,7 +10,7 @@
 <script type="text/javascript" src="assets/lib/vendor/youtube-api.js"></script>
 ```
 
-2. The plugin will loop through the page, find all the div with 'player-' and then build the Youtube video accordingly.
+- The plugin will loop through the page, find all the div with 'player-' and then build the Youtube video accordingly.
 
 ```
 <div id="player-<YOUTUBE KEY>"></div>
@@ -21,7 +21,7 @@
 
 ## Options
 
-1. You can control the size, by adding a relevant data tag:
+- You can control the size, by adding a relevant data tag:
 ```
 data-height="390"
 data-width="640"
@@ -29,7 +29,7 @@ data-width="640"
 By default it will be 640 wide by 390 high.
 
 
-2. You can ignore the sizing and force the video to load responsively (keeping the aspect ratio).
+- You can ignore the sizing and force the video to load responsively (keeping the aspect ratio).
 
 Just add the following CSS in your CSS file:
 ```
