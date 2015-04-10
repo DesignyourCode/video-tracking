@@ -1,4 +1,6 @@
-# YouTube API
+# YouTube Tracking
+
+Fancy tracking Youtube videos on your site? This script will allow you to tracking videos, just include the js files, jquery and follow the instructions below.
 
 ## Usage:
 - Start by adding the required JavaScript files.
