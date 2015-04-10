@@ -20,20 +20,18 @@ $(document).ready(function(){
       videoTitle: getVideoTitle(ytKey)
     });
   });
-  
 });
 
 function getVideoTitle(vID) {
   var result = '';
   
   $.ajax({
-    url: '//gdata.youtube.com/feeds/api/videos/' + vID + '?v=2&alt=json',
-    async: false,
-    success:function(data) {
-      result = data.entry.title.$t; 
-    }
+      url: '//gdata.youtube.com/feeds/api/videos/' + vID + '?v=2&alt=json',
+      async: false
+  }).done(function (data) {
+      result = data.entry.title.$t;
   });
-  
+
   return result;
 }
 
@@ -55,10 +53,14 @@ function createPlayer(playerInfo) {
     }
   });
 }
+
+var curId,
+    curTitle,
+    curEventData,
+    videoTimer;
+
 function onPlayerStateChange(event) {
-  var curId = $(event.target.c).attr('id'),
-      curTitle,
-      curEventData;
+  curId = $(event.target.c).attr('id');
 
   for(var i = 0; i < playerInfoList.length; i++) {
     if (curId === playerInfoList[i].id) {
@@ -66,20 +68,38 @@ function onPlayerStateChange(event) {
     }
   }
 
-  if (event.data === -1) {
-    curEventData = 'Unstarted';
-  } else if (event.data === 0) {
-    curEventData = 'Ended';
-  } else if (event.data === 1) {
-    curEventData = 'Playing';
-  } else if (event.data === 2) {
-    curEventData = 'Paused';
-  } else if (event.data === 3) {
-    curEventData = 'Buffering';
-  } else if (event.data === 5) {
-    curEventData = 'Video cued';
-  }
+    if (event.data === -1) {
+      curEventData = 'Unstarted';
+    } else if (event.data === 0) {
+      curEventData = 'Ended';
+    } else if (event.data === 1) {
+      curEventData = 'Playing';
+    } else if (event.data === 2) {
+      clearTimeout(videoTimer);
+      
+      videoTimer = setTimeout(function() {
+        pausedState(event, event.target.getCurrentTime());
+      }, 2000);
+    } else if (event.data === 3) {
+      curEventData = 'Buffering';
+    } else if (event.data === 5) {
+      curEventData = 'Video cued';
+    }
 
-  console.log('send, event, Videos, ' + curTitle + ', ' + curEventData + ' (' + event.data + '), ' + parseInt(event.target.getCurrentTime()) );
+    if (event.data !== 2) {
+      pushTrack(event.data, event.target.getCurrentTime());
+    }
+}
+
+function pushTrack(videoState, videoCurTime) {
+  console.log('send, event, Videos, ' + curTitle + ', ' + curEventData + ' (' + videoState + '), ' + parseInt(videoCurTime) );
   //ga('send', 'event', 'Videos', curTitle, curEventData + ' (' + event.data + ')', parseInt(event.target.getCurrentTime()) );
+}
+
+
+function pausedState(videoState, videoCurTime) {
+  if (videoState.data === 2) {
+    curEventData = 'Paused';
+    pushTrack(videoState.data, videoCurTime);
+  }
 }
