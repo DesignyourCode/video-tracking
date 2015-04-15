@@ -1,6 +1,6 @@
 # YouTube Tracking
 
-Fancy tracking Youtube videos on your site? This script will allow you to tracking videos.keep-ratio
+Fancy tracking Youtube videos on your site? This script will allow you to tracking videos.
 
 ###Requirements
  - Google Universal Analytics Script
