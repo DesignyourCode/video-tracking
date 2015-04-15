@@ -1,15 +1,24 @@
 # YouTube Tracking
 
-Fancy tracking Youtube videos on your site? This script will allow you to tracking videos, just include the js files, jquery and follow the instructions below.
+Fancy tracking Youtube videos on your site? This script will allow you to tracking videos, just include jquery, this plugin and follow the instructions below.
 
 ## Usage:
 - Start by adding the required JavaScript files.
+- Use youtube-api.js for development and youtube-api.min.js for production.
 
 ```
-<!-- feel free to use a different jQuery version -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- add the YouTube API Script -->
-<script type="text/javascript" src="assets/lib/vendor/youtube-api.js"></script>
+<script type="text/javascript" src="assets/lib/vendor/youtube-api.min.js"></script>
+```
+
+- Then add the following (remember not to duplicate document.ready, if you already have this just add the plugin initialisation code):
+
+```
+$(document).ready(function(){
+
+  $('body').trackYoutube();
+
+});
 ```
 
 - The plugin will loop through the page, find all the div with 'player-' and then build the Youtube video accordingly.
@@ -22,14 +31,12 @@ Fancy tracking Youtube videos on your site? This script will allow you to tracki
 ```
 
 ## Options
-
 - You can control the size, by adding a relevant data tag:
 ```
 data-height="390"
 data-width="640"
 ```
-By default it will be 640 wide by 390 high.
-
+By default it will be 853 wide by 480 high.
 
 - You can ignore the sizing and force the video to load responsively (keeping the aspect ratio).
 
@@ -55,4 +62,17 @@ And add a parent div with a class of vide and keep-ratio
 <div class="video keep-ratio">
 	<div id="player-ScMzIvxBSi4"></div>
 </div>
+```
+
+##Parameters
+- You can pass in player parameters as an object within the plugin.
+- Please visit [Youtube Embed Parameters](https://developers.google.com/youtube/player_parameters) for available options.
+
+```
+$('body').trackYoutube({
+  playerVars: {
+    'rel': 0,
+    'showinfo': 1
+  }
+});
 ```
