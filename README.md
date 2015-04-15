@@ -1,6 +1,11 @@
 # YouTube Tracking
 
-Fancy tracking Youtube videos on your site? This script will allow you to tracking videos, just include jquery, this plugin and follow the instructions below.
+Fancy tracking Youtube videos on your site? This script will allow you to tracking videos.keep-ratio
+
+###Requirements
+ - Google Universal Analytics Script
+ - jQuery 1.9+
+ - This plugin
 
 ## Usage:
 - Start by adding the required JavaScript files.
@@ -9,6 +14,19 @@ Fancy tracking Youtube videos on your site? This script will allow you to tracki
 ```
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="assets/lib/vendor/youtube-api.min.js"></script>
+```
+
+####You must include GA code on your site
+```
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-XXXXXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
 ```
 
 - Then add the following (remember not to duplicate document.ready, if you already have this just add the plugin initialisation code):
@@ -74,5 +92,20 @@ $('body').trackYoutube({
     'rel': 0,
     'showinfo': 1
   }
+});
+```
+
+##KissMetrics
+This plugin supports KissMetrics tracking as well. However this is not a requirement and is switched off by default.keep-ratio
+
+To enable this you can simply pass a parameter.
+
+```
+$(document).ready(function(){
+
+  $('body').trackYoutube({
+    'kissMetricsTracking': true
+  });
+
 });
 ```
