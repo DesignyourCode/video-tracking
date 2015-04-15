@@ -75,7 +75,7 @@ Just add the following CSS in your CSS file:
 }
 ```
 
-And add a parent div with a class of vide and keep-ratio
+And add a parent div with a class of video and keep-ratio
 ```
 <div class="video keep-ratio">
 	<div id="player-ScMzIvxBSi4"></div>
@@ -96,7 +96,7 @@ $('body').trackYoutube({
 ```
 
 ##KissMetrics
-This plugin supports KissMetrics tracking as well. However this is not a requirement and is switched off by default.keep-ratio
+This plugin supports KissMetrics tracking as well. However this is not a requirement and is switched off by default.
 
 To enable this you can simply pass a parameter.
 
