@@ -1,9 +1,9 @@
 {
-    "name": "YoutubeAPITracking",
+    "name": "youtube-api-tracking",
     "version": "0.0.1",
-    "main": "assets/lib/vendor/youtube-api.js",
+    "author": "Tom Clarke",
+    "main": "youtube-api.js",
     "ignore": [
-        ".gitignore",
         "bower.json",
         "index.html",
         "README.md"
