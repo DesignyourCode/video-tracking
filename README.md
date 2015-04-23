@@ -109,3 +109,7 @@ $(document).ready(function(){
 
 });
 ```
+
+##Installation via Bower
+
+bower install --save youtube-api-tracking
