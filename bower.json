@@ -4,6 +4,7 @@
     "author": "Tom Clarke",
     "main": "youtube-api.js",
     "ignore": [
+    	".gitignore",
         "bower.json",
         "index.html",
         "README.md"
