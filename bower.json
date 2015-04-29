@@ -1,6 +1,6 @@
 {
     "name": "youtube-api-tracking",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "author": "Tom Clarke",
     "main": "youtube-api.js",
     "ignore": [
@@ -8,6 +8,7 @@
         "bower.json",
         "index.html",
         "demo.css",
+        "assets",
         "README.md"
     ]
 }

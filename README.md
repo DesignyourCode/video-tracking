@@ -110,6 +110,9 @@ $(document).ready(function(){
 });
 ```
 
+##Demo
+View the [demo page](http://designyourcode.github.io/youtube-api/)
+
 ##Installation via Bower
 
 bower install --save youtube-api-tracking
