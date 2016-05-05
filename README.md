@@ -29,7 +29,7 @@ This is a plugin for enabling Google Analytics Tracking for HTML5 Videos. The id
 ```
 $(document).ready(function(){
 	// Video Tracking
-	$('body').trackVideo();
+	$('body').trackVideos();
 });
 ```
 
