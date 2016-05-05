@@ -24,12 +24,12 @@ $.fn.trackVideos = function(options) {
 			function setKeyFrames (duration) {
 				var quarter = (duration / 4).toFixed(1);
 				sessionStorage.setItem('one', quarter)
-				sessionStorage.setItem('two', (quarter * 2).toFixed(1));
-				sessionStorage.setItem('three', (quarter * 3).toFixed(1));
+				sessionStorage.setItem('two', parseFloat(quarter * 2).toFixed(1));
+				sessionStorage.setItem('three', parseFloat(quarter * 3).toFixed(1));
 			}
 
 			function videoTimeUpdate () {
-				var curTime = videoId.currentTime.toFixed(1);
+				var curTime = parseFloat(videoId.currentTime).toFixed(1);
 				switch (curTime) {
 					case sessionStorage.getItem('one'):
 						ga('send', 'event', 'video', '25% video played', videoTitle);
