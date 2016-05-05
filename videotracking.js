@@ -16,38 +16,41 @@ $.fn.trackVideos = function(options) {
 
 			// Bind Events
 			videoId.bind('ended', videoEnd);
-			videoId.bind('timeupdate', videoTimeUpdate);
+			videoId.bind('timeupdate', function(){
+                videoTimeUpdate(this);
+            });
 			videoId.bind('play', videoPlay);
 			videoId.bind('pause', videoPause);
 
 			// Functions
 			function setKeyFrames (duration) {
-				var quarter = (duration / 4).toFixed(1);
-				sessionStorage.setItem('one', quarter)
-				sessionStorage.setItem('two', (quarter * 2).toFixed(1));
-				sessionStorage.setItem('three', (quarter * 3).toFixed(1));
-			}
+                var quarter = (duration / 4);
+                sessionStorage.setItem('one', quarter);
+                sessionStorage.setItem('two', (quarter * 2));
+                sessionStorage.setItem('three', (quarter * 3));
+            }
 
-			function videoTimeUpdate () {
-				var curTime = videoId.currentTime.toFixed(1);
-				switch (curTime) {
-					case sessionStorage.getItem('one'):
-						ga('send', 'event', 'video', '25% video played', videoTitle);
-						sessionStorage.setItem('one', null);
-					case sessionStorage.getItem('two'):
-						ga('send', 'event', 'video', '50% video played', videoTitle);
-						sessionStorage.setItem('two', null);
-					case sessionStorage.getItem('three'):
-						ga('send', 'event', 'video', '75% video played', videoTitle);
-						sessionStorage.setItem('three', null);
-				}
-			}
+            function videoTimeUpdate (video) {
+                console.log(videoTitle);
+                var curTime = (video.currentTime);
 
-			function videoEnd () {
-				ga('send', 'event', 'video', '100% video played', videoTitle);
-			}
+                if (curTime >= sessionStorage.getItem('one') && curTime < sessionStorage.getItem('two')) {
+                    ga('send', 'event', 'video', '25% video played', videoTitle);
+                    sessionStorage.setItem('one', null);
+                } else if (curTime >= sessionStorage.getItem('two') && curTime < sessionStorage.getItem('three')) {
+                    ga('send', 'event', 'video', '50% video played', videoTitle);
+                    sessionStorage.setItem('two', null);
+                } else if (curTime >= sessionStorage.getItem('three')) {
+                    ga('send', 'event', 'video', '75% video played', videoTitle);
+                    sessionStorage.setItem('three', null);
+                }
+            }
 
-			function videoPlay () {
+            function videoEnd () {
+                ga('send', 'event', 'video', '100% video played', videoTitle);
+            }
+
+            function videoPlay () {
 				ga('send', 'event', 'video', 'video played', videoTitle);
 				setKeyFrames(this.duration);
 			}
