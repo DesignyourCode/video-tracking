@@ -1,7 +1,7 @@
 {
     "name": "youtube-api-tracking",
-    "version": "0.0.5",
-    "author": "Tom Clarke",
+    "version": "1.1.0",
+    "author": "DesignyourCode",
     "main": "youtube-api.js",
     "ignore": [
     	".gitignore",

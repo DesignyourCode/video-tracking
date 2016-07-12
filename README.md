@@ -48,6 +48,17 @@ $(document).ready(function(){
 <div id="player-ScMzIvxBSi4"></div>
 ```
 
+## IMPORTANT
+If a Youtube video hasn't had it's title entered properly when uploaded, you will need to define one yourself.
+
+To do this add data-title attribute:
+
+```
+<div id="player-ScMzIvxBSi4" data-title="Title goes here"></div>
+```
+It is good practice to test what GA data is being sent.
+
+
 ## Options
 - You can control the size, by adding a relevant data tag:
 ```

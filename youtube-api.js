@@ -1,3 +1,9 @@
+/**
+ * HTML5 Video Tracking
+ * @version 1.1.0
+ * @author DesignyourCode
+ * @license The MIT License (MIT)
+ */
 $.fn.trackYoutube = function(options) {
   if (typeof(ga) == 'undefined') {
     console.warn("Google Analytics is not installed");
@@ -61,17 +67,24 @@ $.fn.trackYoutube = function(options) {
       });
     }
 
-    var curId,
-        curTitle,
+    var curTitle,
         curEventData,
         videoTimer;
 
     function onPlayerStateChange(event) {
-      curId = $(event.target.c).attr('id');
-
       for(var i = 0; i < playerInfoList.length; i++) {
-        if (curId === playerInfoList[i].id) {
-          curTitle = playerInfoList[i].videoTitle;
+        var id = playerInfoList[i].id,
+            title = getVideoTitle(id);
+
+        if (id === playerInfoList[i].id) {
+
+          if ($('#' + id).attr('data-title')) {
+            curTitle = $('#' + id).data('title');
+          } else if (playerInfoList[i].videoTitle !== '') {
+            curTitle = playerInfoList[i].videoTitle;
+          } else {
+            curTitle = 'No video title set';
+          }
         }
       }
 
