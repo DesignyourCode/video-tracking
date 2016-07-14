@@ -1,6 +1,6 @@
 /**
  * HTML5 Video Tracking
- * @version 1.1.1
+ * @version 1.1.2
  * @author DesignyourCode
  * @license The MIT License (MIT)
  */
@@ -98,7 +98,7 @@ $.fn.trackYoutube = function(options) {
         }
 
         function pushTrack(videoState, videoCurTime) {
-            ga('send', 'event', 'Videos', curTitle, curEventData, parseInt(videoCurTime) );
+            ga('send', 'event', 'Videos', curEventData, curTitle, parseInt(videoCurTime) );
 
             if (settings.kissMetricsTracking === true) {
                 _kmq.push(['record', 'Videos', {
