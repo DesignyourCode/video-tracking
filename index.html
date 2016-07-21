@@ -1,70 +1,187 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>YouTube Iframe API</title>
-    <!-- start : demo only css -->
-    <link rel="stylesheet" href="demo.css" />
-    <!-- end : demo only css -->
+    <head>
+        <title>Tracking for Youtube and HTML5 Videos</title>
+        <link rel="stylesheet" href="assets/styles/demo/app.css" />
+        
+        <!-- PLUGIN RELATED CODE -->
+        <link rel="stylesheet" href="dist/video-tracking.css" />
+        
+        <!-- jQuery and GA code must be on the site for the plugin to work -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <link rel="stylesheet" href="youtube-api.css" />
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script type="text/javascript" src="youtube-api.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){
+            ga('create', 'UA-XXXXXXXX-X', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="dist/video-tracking.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('[data-track-video]').trackVideo({
+                    playerVars: {
+                        'rel': 0,
+                        'showinfo': 1
+                    }
+                });
+            });
+        </script>
+        <!-- END: PLUGIN RELATED CODE -->
+    </head>  
+  
+    <body>
+        <header>
+            <div class="content">
+                <h1>Google Analytics and KissMetrics Video Tracking</h1>
+                <h2>For Youtube and HTML5 Videos</h2>
+            </div>
+        </header>
 
-      $('body').trackYoutube({
-        playerVars: {'rel': 0, 'showinfo': 1 }
-      });
+        <section>
+            <div class="content">
+                <h2><strong>HTML5:</strong> Responsive (aspect ratio) Video</h2>
+                
+                <div class="left half">
+                    <!-- Wrap your video in the .video-ratio -->
+                    <div class="video-ratio">
+                        <video data-track-video="html5" poster="assets/vid/demo.jpg" controls loop data-title="The Roar of Digital Card" data-gacategory="video card">
+                            <source src="assets/vid/demo.mp4" type="video/mp4" />
+                            <object type="application/x-shockwave-flash" data="assets/swf/flowplayer-3.2.18.swf" width="640" height="360">
+                                <param name="movie" value="assets/swf/flowplayer-3.2.18.swf" />
+                                <param name="allowFullScreen" value="true" />
+                                <param name="wmode" value="transparent" />
+                                <param name="loop" value="true" />
+                                <param name="flashVars" value="config={'playlist':['assets%2Fvid%2Fdemo.mp4',{'url':'assets%2Fvid%2Fdemo.jpg','autoPlay':false}]}" />
+                                <img src="assets/vid/demo.jpg" width="640" height="360" title="No Flash found" />
+                            </object>
+                        </video>
+                    </div>
+                </div>
 
+                <div class="right half">
+                    <div class="openTabby" id="tabs1">
+                        <div class="openTabby--slidesContainer">
+
+                            <article id="1" data-tab-name="HTML" class="openTabby--slide">
+                                <pre class="language-markup"><code>&lt;div class="video-ratio"&gt;
+    &lt;video data-track-video="html5" poster="assets/vid/demo.jpg" controls loop data-title="The Roar of Digital Card" data-gacategory="video card"&gt;
+        &lt;source src="assets/vid/demo.mp4" type="video/mp4" /&gt;
+        &lt;object type="application/x-shockwave-flash" data="assets/swf/flowplayer-3.2.18.swf" width="640" height="360"&gt;
+            &lt;param name="movie" value="assets/swf/flowplayer-3.2.18.swf" /&gt;
+            &lt;param name="allowFullScreen" value="true" /&gt;
+            &lt;param name="wmode" value="transparent" /&gt;
+            &lt;param name="loop" value="true" /&gt;
+            &lt;param name="flashVars" value="config={'playlist':['assets%2Fvid%2Fdemo.mp4',{'url':'assets%2Fvid%2Fdemo.jpg','autoPlay':false}]}" /&gt;
+            &lt;img src="assets/vid/demo.jpg" width="640" height="360" title="No Flash found" /&gt;
+        &lt;/object&gt;
+    &lt;/video&gt;
+&lt;/div&gt;</code></pre>
+                            </article>
+
+                            <article id="2" data-tab-name="SCSS" class="openTabby--slide">
+                                <pre class="language-scss"><code>.video-ratio {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    
+    iframe, object, video, embed {     
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}</code></pre>
+                            </article>
+
+
+                            <article id="3" data-tab-name="JS" class="openTabby--slide">
+                                <pre class="language-javascript"><code>$(document).ready(function(){
+    $('[data-track-video="html5"]').trackVideo();
+});
+
+// Enabling Kissmetrics tracking
+$(document).ready(function(){
+    $('[data-track-video="html5"]').trackVideo({
+        kissmetrics: true
     });
-    </script>
-  </head>  
-  
-  <body>
-    <header class="demo orange">
-      <h1>Youtube API Tracking</h1>
-      <h4>Google Analytics and KissMetrics</h4>
-    </header>
-    
-    <section class="demo green">
-      <div class="inner">
-        
-        <h2>Standard Video</h2>
-        
-        <!-- Simply add the snippet below and add the ID of your youtube video -->
-        <div id="player-M7lc1UVf-VE" data-height="390" data-width="640"></div>
+});</code></pre>
+                            </article>
 
-      </div>
-    </section>
+                        </div>
+                    </div>
+                </div>
 
-    <section class="demo yellow">
-      <div class="inner">
-  
-        <h2>Responsive (aspect ratio) Video</h2>
-      
-        <!-- Wrap your video in the .video.keep-ratio tag -->
-        <div class="video keep-ratio"><div id="player-MgmulbyfMEU" data-height="390" data-width="640"></div></div>
-  
-      </div>
-    </section>
-    
-    <!-- footer: demo only -->
-    <footer>
-      <div class="inner">
-        <a href="http://designyourcode.io/" target="_blank"><img src="assets/logo.png" alt="designyourcode.io" class="logo" width="400" height="63" /></a>
-        <a href="https://github.com/designyourcode/youtube-api" class="github-link">View on Github <span class="octicon octicon-mark-github"></span></a>
-      </div>
-    </footer>
-    
-    <!-- GA code must be on the site for the plugin to work -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            </div>
+        </section>
 
-      ga('create', 'UA-XXXXXXXX-X', 'auto');
-      ga('send', 'pageview');
-    </script>
-  </body>
+        <section>
+            <div class="content">
+                <h2><strong>Youtube:</strong> Responsive (aspect ratio) Video</h2>
+
+                <div class="left half">
+                    <!-- Wrap your video in the .video-ratio -->
+                    <div class="video-ratio">
+                        <div data-track-video="youtube" id="player-MgmulbyfMEU" data-height="390" data-width="640"></div>
+                    </div>
+                </div>
+
+                <div class="right half">
+                    <div class="openTabby" id="tabs1">
+                        <div class="openTabby--slidesContainer">
+
+                            <article id="1" data-tab-name="HTML" class="openTabby--slide">
+                                <pre class="language-markup"><code>&lt;div class="video-ratio"&gt;
+    &lt;div data-track-video="youtube" id="player-MgmulbyfMEU" data-height="390" data-width="640"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </article>
+
+                            <article id="2" data-tab-name="SCSS" class="openTabby--slide">
+                                <pre class="language-scss"><code>.video-ratio {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    
+    iframe, object, video, embed {     
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}</code></pre>
+                            </article>
+
+
+                            <article id="3" data-tab-name="JS" class="openTabby--slide">
+                                <pre class="language-javascript"><code>$(document).ready(function(){
+    $('[data-track-video="youtube"]').trackVideo({
+        playerVars: {
+            'rel': 0,
+            'showinfo': 1
+        }
+    });
+});</code></pre>
+                            </article>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built by<br />
+                <a href="http://designyourcode.io" target="_blank"><img class="logo" src="assets/img/designyourcode.png" alt="designyourcode.io"></a>
+            </p>
+            <p><a href="https://github.com/designyourcode/video-tracking">Visit the project on Github<br /><i class="fa fa-github"></i></a></p>
+        </footer>
+
+        <script src="assets/lib/demo/app.min.js"></script>
+    </body>
 </html>

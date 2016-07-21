@@ -1,22 +1,24 @@
-# YouTube Tracking
+# Tracking for Youtube and HTML5 Videos
 
-Fancy tracking Youtube videos on your site? This script will allow you to tracking videos.
+This jQuery plugin has been built to allow you to track videos in your site. It supports Youtube videos and HTML5 embeded videos.
 
-###Requirements
+You can push tracking events into both Google's Universal Analytics and KissMetrics.
+
+### Requirements
  - Google Universal Analytics Script
  - jQuery 1.9+
  - This plugin
 
-## Usage:
-- Start by adding the required JavaScript files.
-- Use youtube-api.js for development and youtube-api.min.js for production.
+## Quick Start:
+ - Add jQuery to your site
+ - Use video-tracking.js for development and video-tracking.min.js for production
 
 ```
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type="text/javascript" src="assets/lib/vendor/youtube-api.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="assets/lib/vendor/video-tracking.min.js"></script>
 ```
 
-####You must include GA code on your site
+#### You must include GA code on your site!
 ```
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -29,20 +31,22 @@ Fancy tracking Youtube videos on your site? This script will allow you to tracki
 </script>
 ```
 
+## Getting started with Youtube Video Tracking
+
 - Then add the following (remember not to duplicate document.ready, if you already have this just add the plugin initialisation code):
 
 ```
 $(document).ready(function(){
 
-  $('body').trackYoutube();
+    $('[data-track-video]').trackVideo();
 
 });
 ```
 
-- The plugin will loop through the page, find all the div with 'player-' and then build the Youtube video accordingly.
+- The plugin will loop through the page, find all the div's with 'player-' and then build the Youtube video accordingly.
 
 ```
-<div id="player-<YOUTUBE KEY>"></div>
+<div id="player-<youtube-key>"></div>
 
 <!-- For example: -->
 <div id="player-ScMzIvxBSi4"></div>
@@ -71,13 +75,16 @@ By default it will be 853 wide by 480 high.
 
 Just add the following CSS in your CSS file:
 ```
-.video.keep-ratio {
+.video-ratio {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
-.video.keep-ratio iframe {     
+.video-ratio iframe,
+.video-ratio video,
+.video-ratio object,
+.video-ratio embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -121,9 +128,31 @@ $(document).ready(function(){
 });
 ```
 
-##Demo
-View the [demo page](http://designyourcode.github.io/youtube-api/)
+## Getting started with HTML5 Video Tracking
 
-##Installation via Bower
+You will need to assign a title to your video
+
+```
+<video data-title="Title of Video Goes here">
+```
+
+You can also define a cateory for your video when it is put into GA.
+
+```
+<video data-gacategory="welcome video">
+```
+
+## Demo
+View the [demo page](http://video-tracking.designyourcode.io/)
+
+## Installation - via Bower
 
 bower install --save youtube-api-tracking
+
+## @TODO
+
+ 1. Improve settings logic
+ 2. Add more youtube video parameter options to match Youtube's offering
+ 3. Improve documentation
+ 4. Adding NPM installation support
+ 5. Add documentation to demo page

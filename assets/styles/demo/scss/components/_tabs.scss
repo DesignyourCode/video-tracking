@@ -1,0 +1,229 @@
+.openTabby,
+.openTabby * {
+  box-sizing: border-box;
+}
+
+.openTabby {
+    // margin-top: 30px;
+    overflow: hidden;
+}
+.openTabby .openTabby--nav {
+  position: relative;
+  display: none;
+  width: 10000px;
+}
+.openTabby .openTabby--nav:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.openTabby .openTabby--nav ul {
+  display: table;
+}
+.openTabby .openTabby--nav ul:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.openTabby .openTabby--nav ul li {
+  float: left;
+  cursor: pointer;
+  list-style: none;
+}
+.openTabby .openTabby--nav ul li.active {
+  cursor: default;
+}
+.openTabby .openTabby--slidesContainer {
+  display: table;
+  position: relative;
+  overflow: scroll;
+}
+.openTabby .openTabby--slidesContainer .openTabby--slide {
+  width: 100%;
+  overflow: scroll;
+}
+
+.js .openTabby .openTabby--nav {
+  display: block;
+}
+.js .openTabby .openTabby--slidesContainer {
+  display: block;
+}
+.js .openTabby .openTabby--slidesContainer .openTabby--slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.js .openTabby .openTabby--slidesContainer .openTabby--slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.js .openTabby.csstransitions .openTabby--nav ul li {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.js .openTabby.csstransitions .openTabby--slidesContainer {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.js .openTabby.csstransitions .openTabby--slidesContainer .openTabby--slide {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.openTabby .effect-fade .openTabby--slide {
+  opacity: 0;
+}
+.openTabby .effect-fade .openTabby--slide.active {
+  opacity: 1;
+}
+.openTabby .effect-shrink .openTabby--slide {
+  -webkit-transform: scale(0.6);
+  -ms-transform: scale(0.6);
+  transform: scale(0.6);
+}
+.openTabby .effect-shrink .openTabby--slide.active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.openTabby .effect-grow .openTabby--slide {
+  -webkit-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
+}
+.openTabby .effect-grow .openTabby--slide.active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.openTabby .effect-slide-left .openTabby--slide {
+  -webkit-transform: translate(-100%, 0);
+  -ms-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}
+.openTabby .effect-slide-left .openTabby--slide.active {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.openTabby .effect-slide-right .openTabby--slide {
+  -webkit-transform: translate(100%, 0);
+  -ms-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+.openTabby .effect-slide-right .openTabby--slide.active {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.openTabby .effect-slide-up .openTabby--slide {
+  -webkit-transform: translate(0, 100%);
+  -ms-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+.openTabby .effect-slide-up .openTabby--slide.active {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.openTabby .effect-slide-down .openTabby--slide {
+  -webkit-transform: translate(0, -100%);
+  -ms-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+.openTabby .effect-slide-down .openTabby--slide.active {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.openTabby .effect-flip-vertical .openTabby--slide {
+  -webkit-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+.openTabby .effect-flip-vertical .openTabby--slide.active {
+  -webkit-transform: rotateX(0);
+  -ms-transform: rotateX(0);
+  transform: rotateX(0);
+}
+.openTabby .effect-flip-horizontal .openTabby--slide {
+  -webkit-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.openTabby .effect-flip-horizontal .openTabby--slide.active {
+  -webkit-transform: rotateY(0);
+  -ms-transform: rotateY(0);
+  transform: rotateY(0);
+}
+.openTabby .effect-rotate .openTabby--slide {
+  -webkit-transform: rotateZ(360deg);
+  -ms-transform: rotateZ(360deg);
+  transform: rotateZ(360deg);
+}
+.openTabby .effect-rotate .openTabby--slide.active {
+  -webkit-transform: rotateZ(0);
+  -ms-transform: rotateZ(0);
+  transform: rotateZ(0);
+}
+
+.js .openTabby.responsive .openTabby--slidesContainer {
+  overflow: hidden;
+}
+// .js .openTabby.responsive .openTabby--slidesContainer .openTabby--slide {
+//   display: table;
+//   overflow: hidden;
+// }
+
+.js .openTabby.accordion .openTabby--nav {
+  width: auto;
+}
+.js .openTabby.accordion .openTabby--nav ul {
+  width: 100%;
+}
+.js .openTabby.accordion .openTabby--nav ul li {
+  width: 100%;
+  float: none;
+  display: block;
+  text-align: center;
+}
+
+.openTabby .openTabby--nav {
+    background: #272822;
+    border-bottom: 1px solid #444444;
+}
+.openTabby .openTabby--nav ul {
+  // padding: 10px 10px 0;
+  padding: 0;
+  float: left;
+}
+.openTabby .openTabby--nav ul li {
+    line-height: 34px;
+    padding: 0 20px;
+    background: #333;
+    color: #ffffff;
+}
+.openTabby .openTabby--nav ul li:hover {
+  color: darken($primary, 10%);
+}
+.openTabby .openTabby--nav ul li.active {
+  font-weight: 600;
+  color: $primary;
+  background: #4a4a4a;
+}
+.openTabby .openTabby--slidesContainer {
+  background-color: #fff;
+}
+.openTabby .openTabby--slidesContainer .openTabby--slide {
+  padding: 0;
+  background: #fff;
+  color: #666;
+}
+.openTabby.accordion .openTabby--nav ul {
+  padding: 3.5rem;
+}
+
+/*# sourceMappingURL=opentabby.css.map */

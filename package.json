@@ -1,0 +1,20 @@
+{
+    "name": "video-tracking",
+    "version": "1.0.0",
+    "description": "jQuery plugin to enable Youtube and HTML5 video tracking.",
+    "author": "DesignyourCode",
+    "license": "MIT",
+    "devDependencies": {
+        "express": "^4.12.2",
+        "gulp": "^3.8.11",
+        "gulp-concat": "^2.5.2",
+        "gulp-livereload": "^3.8.0",
+        "gulp-notify": "^2.2.0",
+        "gulp-plumber": "^1.0.1",
+        "gulp-rename": "^1.2.0",
+        "gulp-sass": "^2.1.1",
+        "gulp-sass-glob": "^1.0.6",
+        "gulp-uglify": "^1.1.0",
+        "gulp-watch": "^4.1.1"
+    }
+}
