@@ -27,6 +27,15 @@
                         showinfo: 1
                     }
                 });
+
+                // $('[data-video-id="customsettings"]').trackVideo({
+                //     playerVars: {
+                //         rel: 0,
+                //         showinfo: 1,
+                //         autoplay: true
+                //     },
+                //     kissmetrics: true
+                // });
             });
         </script>
         <!-- END: PLUGIN RELATED CODE -->
@@ -126,12 +135,12 @@ $(document).ready(function(){
                 <div class="left half">
                     <!-- Wrap your video in the .video-ratio -->
                     <div class="video-ratio">
-                        <div data-track-video="youtube" id="player-UggSw4nGfw0" data-height="390" data-width="640"></div>
+                        <div data-track-video="youtube" id="player-UggSw4nGfw0"></div>
                     </div>
 
-                    <!-- <div class="video-ratio">
-                        <div data-track-video="youtube" id="player-Sv3xVOs7_No" data-height="390" data-width="640"></div>
-                    </div> -->
+                    <div class="video-ratio">
+                        <div data-track-video="youtube" data-video-params="{rel: 0, showinfo: 1}" id="player-Sv3xVOs7_No"></div>
+                    </div>
                 </div>
 
                 <div class="right half">
