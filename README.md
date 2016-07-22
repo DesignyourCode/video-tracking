@@ -105,11 +105,11 @@ And add a parent div with a class of video and keep-ratio
 - Please visit [Youtube Embed Parameters](https://developers.google.com/youtube/player_parameters) for available options.
 
 ```
-$('body').trackYoutube({
-  playerVars: {
-    'rel': 0,
-    'showinfo': 1
-  }
+$('body').trackVideo({
+    playerVars: {
+        'rel': 0,
+        'showinfo': 1
+    }
 });
 ```
 
@@ -121,9 +121,9 @@ To enable this you can simply pass a parameter.
 ```
 $(document).ready(function(){
 
-  $('body').trackYoutube({
-    'kissMetricsTracking': true
-  });
+    $('body').trackVideo({
+        'kissMetricsTracking': true
+    });
 
 });
 ```
