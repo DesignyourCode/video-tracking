@@ -152,7 +152,6 @@ bower install --save youtube-api-tracking
 ## @TODO
 
  1. Improve settings logic
- 2. Add more youtube video parameter options to match Youtube's offering
- 3. Improve documentation
- 4. Adding NPM installation support
- 5. Add documentation to demo page
+ 2. Improve documentation
+ 3. Adding NPM installation support
+ 4. Add documentation to demo page
