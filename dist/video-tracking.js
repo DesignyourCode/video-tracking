@@ -34,22 +34,34 @@
                             var height = $(this).data('height') ? $(this).data('height') : 480,
                                 width = $(this).data('width') ? $(this).data('width') : 853,
                                 ytKey = $(this).attr('id').replace('player-', ''),
-                                playerId = $(this).attr('id');
+                                playerId = $(this).attr('id'),
+                                playerVars;
                             
-                            if ($(this).attr('data-title')) {
+                            if ($(this).data('title')) {
                                 curTitle = $(this).data('title');
                             } else {
                                 curTitle = 'Youtube Video: ' + ytKey;
                             }
+
+                            // if ($(this).data('custom-settings') && $(this).data('custom-settings') === true) {
+                            //     var params = $(this).data('player-vars');
+                            //     var obj = $.parseJSON(params);
+
+                            //     playerVars = obj;
+                            // } else {
+                            //     playerVars = settings.playerVars;
+                            // }
 
                             playerInfoList.push({
                                 id: playerId,
                                 height: height,
                                 width: width,
                                 videoId: ytKey,
-                                videoTitle: curTitle
+                                videoTitle: curTitle,
+                                playerVars: playerVars
                             });
                         });
+                        
 
                         window.onYouTubeIframeAPIReady = function() {
                             if(typeof playerInfoList === 'undefined') {
@@ -66,7 +78,7 @@
                                 height: playerInfo.height,
                                 width: playerInfo.width,
                                 videoId: playerInfo.videoId,
-                                playerVars: settings.playerVars,
+                                playerVars: playerInfo.playerVars,
                                 events: {
                                     'onStateChange': onPlayerStateChange
                                 }

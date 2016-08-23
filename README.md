@@ -93,9 +93,9 @@ Just add the following CSS in your CSS file:
 }
 ```
 
-And add a parent div with a class of video and keep-ratio
+And add a parent div with a class of `video-ratio`.
 ```
-<div class="video keep-ratio">
+<div class="video-ratio">
 	<div id="player-ScMzIvxBSi4"></div>
 </div>
 ```
@@ -136,7 +136,7 @@ You will need to assign a title to your video
 <video data-title="Title of Video Goes here">
 ```
 
-You can also define a cateory for your video when it is put into GA.
+You can also define a category for your video when it is put into GA.
 
 ```
 <video data-gacategory="welcome video">
@@ -144,10 +144,6 @@ You can also define a cateory for your video when it is put into GA.
 
 ## Demo
 View the [demo page](http://video-tracking.designyourcode.io/)
-
-## Installation - via Bower
-
-bower install --save youtube-api-tracking
 
 ## @TODO
 
